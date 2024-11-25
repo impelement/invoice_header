@@ -1,0 +1,31 @@
+<odoo>
+    <data>
+        <template id="report_invoice_customize" inherit_id="account.report_invoice_document">
+            <xpath expr="//div[contains(@class,'row')]" position="after">
+                <div class="mt-5 clearfix">
+                    <div class="page mb-4">
+                        <t t-if="o.move_type == 'out_invoice' and o.state == 'posted'">
+                            <strong>
+                                <span class="text-start">Payble to: 2222222 Ongaior</span>
+                            </strong>
+                            <br/>
+                            <strong>
+                                <span class="text-start">eTransfser: asdf@asdf.com</span>
+                            </strong>
+                        </t>
+                    </div>
+                </div>
+            </xpath>
+            <xpath expr="//div[@id='payment_term']//div[@id='qrcode']" position="after">
+                <t t-if="o.move_type == 'out_invoice' and o.state == 'posted' and o.narration">
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <strong>Term and Conditions</strong>
+                </t>
+            </xpath>
+        </template>
+    </data>
+</odoo>
